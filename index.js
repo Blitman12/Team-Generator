@@ -152,11 +152,9 @@ const promptQuestions = async () => {
         const addMember = await addAnotherMember()
         if (addMember.confirmAdd && addMember.jobType === 'Engineer') {
             engineerMembers.push(await inquirer.prompt(teamMemberQuestions))
-            await addAnotherMember()
         }
         if (addMember.confirmAdd && addMember.jobType === 'Intern') {
             internMembers.push(await inquirer.prompt(teamMemberQuestions))
-            await addAnotherMember()
         }
     } while (shouldContinue);
 
