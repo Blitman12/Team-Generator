@@ -58,16 +58,16 @@ const managerQuestions = [
     }
 ]
 
-const teamMemberQuestions = [
+const engineerQuestions = [
     {
         type: 'input',
         name: 'name',
-        message: 'What is the Team Members name?',
+        message: 'What is the engineer`s name?',
         validate: nameInput => {
             if (nameInput) {
                 return true;
             } else {
-                console.log('Please enter your name');
+                console.log('Please enter a name');
                 return false;
             }
         }
@@ -75,12 +75,12 @@ const teamMemberQuestions = [
     {
         type: 'input',
         name: 'employeeID',
-        message: 'What is the employee ID Number?',
+        message: 'What is the engineer`s employee ID Number?',
         validate: EIDInput => {
             if (EIDInput) {
                 return true;
             } else {
-                console.log('Please enter your employee ID#');
+                console.log('Please enter an employee ID#');
                 return false;
             }
         }
@@ -88,12 +88,12 @@ const teamMemberQuestions = [
     {
         type: 'input',
         name: 'emailAddress',
-        message: 'What is the team members email address?',
+        message: 'What is the engineer`s email address?',
         validate: emailnput => {
             if (emailnput) {
                 return true;
             } else {
-                console.log('Please enter your email');
+                console.log('Please enter an email');
                 return false;
             }
         }
@@ -101,12 +101,67 @@ const teamMemberQuestions = [
     {
         type: 'input',
         name: 'github',
-        message: 'What is the members github username?',
+        message: 'What is the engineer`s github username?',
         validate: gitInput => {
             if (gitInput) {
                 return true;
             } else {
-                console.log('Please enter the github username');
+                console.log('Please enter the engineer`s github username');
+                return false;
+            }
+        }
+    }
+]
+
+const internQuestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is the intern`s name?',
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log('Please enter the intern`s name');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'employeeID',
+        message: 'What is the intern`s ID Number?',
+        validate: EIDInput => {
+            if (EIDInput) {
+                return true;
+            } else {
+                console.log('Please enter the intern`s employee ID#');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'emailAddress',
+        message: 'What is the intern`s email address?',
+        validate: emailnput => {
+            if (emailnput) {
+                return true;
+            } else {
+                console.log('Please enter the intern`s email');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What is the intern`s github school?',
+        validate: schoolInput => {
+            if (schoolInput) {
+                return true;
+            } else {
+                console.log('Please enter the intern`s school');
                 return false;
             }
         }
@@ -151,10 +206,10 @@ const promptQuestions = async () => {
     do {
         const addMember = await addAnotherMember()
         if (addMember.confirmAdd && addMember.jobType === 'Engineer') {
-            engineerMembers.push(await inquirer.prompt(teamMemberQuestions))
+            engineerMembers.push(await inquirer.prompt(engineerQuestions))
         }
         if (addMember.confirmAdd && addMember.jobType === 'Intern') {
-            internMembers.push(await inquirer.prompt(teamMemberQuestions))
+            internMembers.push(await inquirer.prompt(internQuestions))
         }
     } while (shouldContinue);
 
