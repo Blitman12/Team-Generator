@@ -156,7 +156,7 @@ const internQuestions = [
     {
         type: 'input',
         name: 'school',
-        message: 'What is the intern`s github school?',
+        message: 'What is the intern`s school?',
         validate: schoolInput => {
             if (schoolInput) {
                 return true;
