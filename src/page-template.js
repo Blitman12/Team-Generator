@@ -32,42 +32,31 @@ module.exports = templateData => {
   }
 
   const createEngineer = () => {
-    if (engineer.length === 0) {
-      return;
-    }
-    return `
-    <div class="m-2 card pl-2 pr-2 text-white bg-dark">
-      ${engineer.map(worker => {
+    return engineer.map(worker => {
       return `
-        <h2>Name: ${worker.getName()}</h2>
-        <p>Role: ${worker.getRole()}</p>
-        <p>ID Number: ${worker.getID()}</p>
-        <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
-        <p>GitHub: <a href="https://github.com/${worker.getGithub()}" target="_blank">${worker.getGithub()}</a></p>
-        `
-    }).join('')}
-    </div>
-    `
+      <div class="m-2 card pl-2 pr-2 text-white bg-dark">
+      <h2>Name: ${worker.getName()}</h2>
+      <p>Role: ${worker.getRole()}</p>
+      <p>ID Number: ${worker.getID()}</p>
+      <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
+      <p>GitHub: <a href="https://github.com/${worker.getGithub()}" target="_blank">${worker.getGithub()}</a></p>
+      </div>
+      `
+    }).join("")
   }
 
-
   const createIntern = () => {
-    if (intern.length === 0) {
-      return;
-    }
-    return `
-    <div class="m-2 pl-2 pr-2 card text-white bg-dark">
-      ${intern.map(worker => {
+    return intern.map(worker => {
       return `
-        <h2>Name: ${worker.getName()}</h2>
-        <p>Role: ${worker.getRole()}</p>
-        <p>ID Number: ${worker.getID()}</p>
-        <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
-        <p>School: ${worker.getSchool()}</p>
-        `
-    }).join('')}
-    </div>
-    `
+      <div class="m-2 pl-2 pr-2 card text-white bg-dark">
+      <h2>Name: ${worker.getName()}</h2>
+      <p>Role: ${worker.getRole()}</p>
+      <p>ID Number: ${worker.getID()}</p>
+      <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
+      <p>School: ${worker.getSchool()}</p>
+      </div>
+      `
+    }).join("")
   }
 
 
