@@ -20,11 +20,11 @@ module.exports = templateData => {
     <div>
       ${manager.map(worker => {
       return `
-        <h2>${worker.getName()}</h2>
-        <p>${worker.getRole()}</p>
-        <p>${worker.getID()}</p>
-        <p>${worker.getEmail()}</p>
-        <p>${worker.officeNumber}</p>
+        <h2>Name: ${worker.getName()}</h2>
+        <p>Role: ${worker.getRole()}</p>
+        <p>ID Number: ${worker.getID()}</p>
+        <p>Email: ${worker.getEmail()}</p>
+        <p>Office number:${worker.officeNumber}</p>
         `
     })}
     </div>
@@ -36,11 +36,11 @@ module.exports = templateData => {
     <div>
       ${engineer.map(worker => {
       return `
-        <h2>${worker.getName()}</h2>
-        <p>${worker.getRole()}</p>
-        <p>${worker.getID()}</p>
-        <p>${worker.getEmail()}</p>
-        <p>${worker.getGithub()}</p>
+        <h2>Name: ${worker.getName()}</h2>
+        <p>Role: ${worker.getRole()}</p>
+        <p>ID Number: ${worker.getID()}</p>
+        <p>Email: ${worker.getEmail()}</p>
+        <p>GitHub Username: ${worker.getGithub()}</p>
         `
     }).join('')}
     </div>
@@ -51,11 +51,11 @@ module.exports = templateData => {
     <div>
       ${intern.map(worker => {
       return `
-        <h2>${worker.getName()}</h2>
-        <p>${worker.getRole()}</p>
-        <p>${worker.getID()}</p>
-        <p>${worker.getEmail()}</p>
-        <p>${worker.getSchool()}</p>
+        <h2>Name: ${worker.getName()}</h2>
+        <p>Role: ${worker.getRole()}</p>
+        <p>ID Number: ${worker.getID()}</p>
+        <p>Email: ${worker.getEmail()}</p>
+        <p>School: ${worker.getSchool()}</p>
         `
     }).join('')}
     </div>
