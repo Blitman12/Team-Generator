@@ -2,7 +2,8 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const Manager = require('./lib/Manager')
+const Manager = require('./lib/Manager');
+const writeFile = require('./utils/writeFile');
 
 let shouldContinue = true;
 const employees = [];
@@ -204,6 +205,8 @@ const addAnotherMember = async () => {
 
 const promptQuestions = async () => {
     const managerAnswers = await inquirer.prompt(managerQuestions)
+    const manager = new Manager(managerAnswers)
+    employees.push(manager)
 
     do {
         const addMember = await addAnotherMember()
@@ -219,12 +222,15 @@ const promptQuestions = async () => {
         }
     } while (shouldContinue);
 
-    return { managerAnswers, employees}
+    return employees
 }
 
 
 promptQuestions()
     .then(data => {
-        console.log(data)
+        return generatePage(data)
+    })
+    .then(pageHTML => {
+        writeFile(pageHTML)
     })
 
