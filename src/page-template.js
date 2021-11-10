@@ -17,13 +17,13 @@ module.exports = templateData => {
 
   const createManager = () => {
     return `
-    <div>
+    <div class="m-2 card pl-2 pr-2 text-white bg-dark">
       ${manager.map(worker => {
       return `
         <h2>Name: ${worker.getName()}</h2>
         <p>Role: ${worker.getRole()}</p>
         <p>ID Number: ${worker.getID()}</p>
-        <p>Email: ${worker.getEmail()}</p>
+        <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
         <p>Office number:${worker.officeNumber}</p>
         `
     })}
@@ -32,29 +32,37 @@ module.exports = templateData => {
   }
 
   const createEngineer = () => {
+    if (engineer.length === 0) {
+      return;
+    }
     return `
-    <div>
+    <div class="m-2 card pl-2 pr-2 text-white bg-dark">
       ${engineer.map(worker => {
       return `
         <h2>Name: ${worker.getName()}</h2>
         <p>Role: ${worker.getRole()}</p>
         <p>ID Number: ${worker.getID()}</p>
-        <p>Email: ${worker.getEmail()}</p>
-        <p>GitHub Username: ${worker.getGithub()}</p>
+        <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
+        <p>GitHub: <a href="https://github.com/${worker.getGithub()}" target="_blank">${worker.getGithub()}</a></p>
         `
     }).join('')}
     </div>
     `
   }
+
+
   const createIntern = () => {
+    if (intern.length === 0) {
+      return;
+    }
     return `
-    <div>
+    <div class="m-2 pl-2 pr-2 card text-white bg-dark">
       ${intern.map(worker => {
       return `
         <h2>Name: ${worker.getName()}</h2>
         <p>Role: ${worker.getRole()}</p>
         <p>ID Number: ${worker.getID()}</p>
-        <p>Email: ${worker.getEmail()}</p>
+        <p>Email: <a href="mailto:${worker.getEmail()}" target="_blank">${worker.getEmail()}</a></p>
         <p>School: ${worker.getSchool()}</p>
         `
     }).join('')}
@@ -71,19 +79,19 @@ module.exports = templateData => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <title>Employee Portfolio</title>
+      <title>Team-Generator</title>
     </head>
     <body>
       <header>
       <nav class="container-fluid-nav pb-2 text-center navbar-dark bg-dark">
-      <h1 class="text-light">Here is your team</h1>
+      <h1 class="text-light">My Team</h1>
       </nav>
       </header>
 
-      <div>
+      <div class="container d-flex flex-wrap align-items-center">
       ${createManager()}
-      ${createEngineer()}
-      ${createIntern()}
+      ${engineer.length > 0 ? createEngineer() : ""}
+      ${intern.length > 0 ? createIntern() : ""}
       </div>
     </body>
     </html>
