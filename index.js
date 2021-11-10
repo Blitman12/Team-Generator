@@ -1,7 +1,11 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager')
 
 let shouldContinue = true;
+const employees = [];
 
 const managerQuestions = [
     {
@@ -199,21 +203,23 @@ const addAnotherMember = async () => {
 
 
 const promptQuestions = async () => {
-    const engineerMembers = []
-    const internMembers = []
     const managerAnswers = await inquirer.prompt(managerQuestions)
 
     do {
         const addMember = await addAnotherMember()
         if (addMember.confirmAdd && addMember.jobType === 'Engineer') {
-            engineerMembers.push(await inquirer.prompt(engineerQuestions))
+            let data = await inquirer.prompt(engineerQuestions)
+            const engineer = new Engineer(data)
+            employees.push(engineer)
         }
         if (addMember.confirmAdd && addMember.jobType === 'Intern') {
-            internMembers.push(await inquirer.prompt(internQuestions))
+            let data = await inquirer.prompt(internQuestions)
+            const intern = new Intern(data)
+            employees.push(intern)
         }
     } while (shouldContinue);
 
-    return { managerAnswers, engineerMembers, internMembers }
+    return { managerAnswers, employees}
 }
 
 
