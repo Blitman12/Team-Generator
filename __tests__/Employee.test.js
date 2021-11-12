@@ -2,36 +2,36 @@ const Employee = require('../lib/Employee');
 
 const data = {
         name: 'brad',
-        employeeID: 'brad',
-        emailAddress: 'brad',
-        officeNum: 'brad'
+        employeeID: '565',
+        emailAddress: 'brad@gmail.com',
+        officeNum: '565'
 }
 
 
 test('created a new Employee', () => {
     const employee = new Employee(data)
 
-    expect(employee.name).toEqual(expect.any(String))
-    expect(employee.id).toEqual(expect.any(String))
-    expect(employee.email).toEqual(expect.any(String))
+    expect(employee.name).toBe(data.name)
+    expect(employee.id).toBe(data.employeeID)
+    expect(employee.email).toBe(data.emailAddress)
 })
 
 test('gets employee name', () => {
     const employee = new Employee(data)
 
-    expect(employee.getName()).toEqual(expect.any(String))
+    expect(employee.getName()).toBe(data.name)
 })
 
 test('gets employee id', () => {
     const employee = new Employee(data)
 
-    expect(employee.getID()).toEqual(expect.any(String))
+    expect(employee.getID()).toBe(data.employeeID)
 })
 
 test('gets employee email', () => {
     const employee = new Employee(data)
 
-    expect(employee.getEmail()).toEqual(expect.any(String))
+    expect(employee.getEmail()).toBe(data.emailAddress)
 })
 
 test('gets employee role', () => {

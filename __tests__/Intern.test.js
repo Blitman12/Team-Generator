@@ -10,16 +10,16 @@ const data = {
 test("create intern object", () => {
     const intern = new Intern(data)
 
-    expect(intern.name).toEqual(expect.any(String))
-    expect(intern.id).toEqual(expect.any(String))
-    expect(intern.email).toEqual(expect.any(String))
-    expect(intern.school).toEqual(expect.any(String))
+    expect(intern.name).toBe(data.name)
+    expect(intern.id).toBe(data.employeeID)
+    expect(intern.email).toBe(data.emailAddress)
+    expect(intern.school).toBe(data.school)
 })
 
 test("get the interns school", () => {
     const intern = new Intern(data);
 
-    expect(intern.getSchool()).toEqual(expect.any(String))
+    expect(intern.getSchool()).toBe(data.school)
 })
 
 test("get the intern role", () => {
